@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import br.com.jerodac.Fragments.PlayListFragment;
+
 /**
  * @author Jean Rodrigo Dalbon Cunha on 13/01/17.
  */
