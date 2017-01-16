@@ -1,5 +1,6 @@
 package br.com.jerodac.business;
 
+import br.com.jerodac.BuildConfig;
 import br.com.jerodac.Utils.AppLog;
 import retrofit.ErrorHandler;
 import retrofit.RequestInterceptor;
@@ -11,7 +12,7 @@ import retrofit.RetrofitError;
  */
 public class Configuration {
 
-    private static String BASE_URL = "";
+    private static String BASE_URL = BuildConfig.BASE_URL;
 
     public static API getApi() {
 

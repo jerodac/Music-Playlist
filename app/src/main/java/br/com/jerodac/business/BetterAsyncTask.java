@@ -6,10 +6,10 @@ import android.os.Handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.jerodac.DTOs.ResponseDto;
+import br.com.jerodac.DTOs.ResponseVO;
 import retrofit.RetrofitError;
 
-public abstract class BetterAsyncTask<Result extends ResponseDto>
+public abstract class BetterAsyncTask<Result extends ResponseVO>
         extends AsyncTask<Void, Void, Result> {
 
     private List<Runnable> mExitListeners = new ArrayList<>();
@@ -25,7 +25,7 @@ public abstract class BetterAsyncTask<Result extends ResponseDto>
     protected void onError(Exception ex) {
     }
 
-    protected void onFail(ResponseDto responseVO) {
+    protected void onFail(ResponseVO responseVO) {
 
     }
 
@@ -67,7 +67,7 @@ public abstract class BetterAsyncTask<Result extends ResponseDto>
                 onExit();
                 try {
                     if (mError instanceof RetrofitError) {
-                        ResponseDto responseVO = (ResponseDto) ((RetrofitError) mError).getBodyAs(ResponseDto.class);
+                        ResponseVO responseVO = (ResponseVO) ((RetrofitError) mError).getBodyAs(ResponseVO.class);
                         if (responseVO != null) {
                             onFail(responseVO);
                         } else {
