@@ -76,8 +76,8 @@ public class PlayListAdapter extends RecyclerView
         holder.tvDescribe.setText(mDataset.get(position).getTitle());
         Picasso.with(mContext)
                 .load(mDataset.get(position).getPictureMedium())
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.ic_picasso_loading)
+                .error(R.drawable.ic_picasso_loading)
                 .into(holder.imgRadio);
     }
 

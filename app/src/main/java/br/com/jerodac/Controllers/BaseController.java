@@ -17,6 +17,10 @@ public class BaseController {
         mResultListener = resultListener;
     }
 
+    public ModelPresenter getModel() {
+        return mModel;
+    }
+
     protected void notifySucess() {
         if (mResultListener != null) {
             mResultListener.onSucess(mModel);
