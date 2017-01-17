@@ -21,6 +21,7 @@ import br.com.jerodac.Controllers.BaseController;
 import br.com.jerodac.Controllers.PlayListController;
 import br.com.jerodac.DTOs.RadioDTO;
 import br.com.jerodac.R;
+import br.com.jerodac.Utils.SnackBarUtil;
 import br.com.jerodac.business.ModelPresenter;
 import br.com.jerodac.widgets.DetailsTransition;
 import br.com.jerodac.widgets.GridItemDecoration;
@@ -43,6 +44,7 @@ public class PlayListFragment extends BaseFragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private PlayListAdapter mAdapter;
     private PlayListController controller;
+    private SnackBarUtil snackBarUtil;
 
     @Override
     protected int getLayoutResource() {
@@ -53,6 +55,7 @@ public class PlayListFragment extends BaseFragment {
     protected void initComponents(View rootView) {
         controller = PlayListController.getInstance();
         controller.attatchListener(resultListener);
+        snackBarUtil = new SnackBarUtil(getView());
         swipeRefreshLayout.setOnRefreshListener(onSwipeRefresh);
         mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -111,7 +114,13 @@ public class PlayListFragment extends BaseFragment {
 
         @Override
         public void onError(Exception ex) {
-            Toast.makeText(getContext(), "Falha ao carregar", Toast.LENGTH_SHORT).show();
+            snackBarUtil.showError(new SnackBarUtil.OnClickListener() {
+                @Override
+                public void onClick() {
+                    controller.getPlayLists();
+                }
+            });
+
             swipeRefreshLayout.setRefreshing(false);
         }
     };
@@ -131,6 +140,7 @@ public class PlayListFragment extends BaseFragment {
 
             Bundle bundle = new Bundle();
             bundle.putString("url_image", radioDTO.getPictureMedium());
+            bundle.putInt("id", radioDTO.getId());
             detailFragment.setArguments(bundle);
 
             getActivity().getSupportFragmentManager()
@@ -150,4 +160,9 @@ public class PlayListFragment extends BaseFragment {
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        snackBarUtil.onDestroy();
+    }
 }

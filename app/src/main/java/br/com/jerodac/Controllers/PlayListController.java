@@ -1,7 +1,9 @@
 package br.com.jerodac.Controllers;
 
+import android.util.Log;
+
 import br.com.jerodac.DTOs.RadiosResponseVO;
-import br.com.jerodac.Utils.AppLog;
+import br.com.jerodac.DTOs.TracksVO;
 import br.com.jerodac.business.BetterAsyncTask;
 import br.com.jerodac.business.ModelPresenter;
 import br.com.jerodac.business.RestClient;
@@ -32,19 +34,37 @@ public class PlayListController extends BaseController {
 
             @Override
             protected void onSuccess(RadiosResponseVO responseVO) {
-                AppLog.v(AppLog.TAG, "onSucess");
-                AppLog.v("TAG", "RadioResponse: " + responseVO.toString());
                 mModel.setRadios(responseVO.getData());
                 notifySucess();
             }
 
             @Override
             protected void onError(Exception ex) {
-                AppLog.e("TAG", "onError: ", ex);
                 notifyError(ex);
             }
         }.execute();
     }
 
+    public void getTracks(final int id) {
+        new BetterAsyncTask<TracksVO>() {
+
+            @Override
+            protected TracksVO doIt() {
+                return RestClient.trackList(id);
+            }
+
+            @Override
+            protected void onSuccess(TracksVO tracksVO) {
+                Log.v("TAG", "OBJETO: " + tracksVO.toString());
+                mModel.setMusics(tracksVO.getMusics());
+                notifySucess();
+            }
+
+            @Override
+            protected void onError(Exception ex) {
+                notifyError(ex);
+            }
+        }.execute();
+    }
 
 }

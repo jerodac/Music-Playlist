@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * @author Jean Rodrigo Dalbon Cunha on 17/01/17.
  */
-public class MusicVO extends ResponseVO {
+public class MusicDTO {
     @SerializedName("id")
     protected int id;
 
@@ -17,6 +17,10 @@ public class MusicVO extends ResponseVO {
 
     @SerializedName("preview")
     protected String urlPreview;
+
+    @SerializedName("artist")
+    protected ArtistDTO artist;
+
 
     public int getId() {
         return id;
@@ -48,5 +52,13 @@ public class MusicVO extends ResponseVO {
 
     public void setUrlPreview(String urlPreview) {
         this.urlPreview = urlPreview;
+    }
+
+    public ArtistDTO getArtist() {
+        return artist;
+    }
+
+    public void setArtist(ArtistDTO artist) {
+        this.artist = artist;
     }
 }

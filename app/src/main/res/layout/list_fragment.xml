@@ -31,7 +31,6 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="-40dp"
             app:indicatorColor="@color/colorPrimary"
             app:indicatorName="LineScalePulseOutIndicator"/>
 
