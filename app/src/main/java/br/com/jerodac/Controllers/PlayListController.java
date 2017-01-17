@@ -55,7 +55,6 @@ public class PlayListController extends BaseController {
 
             @Override
             protected void onSuccess(TracksVO tracksVO) {
-                Log.v("TAG", "OBJETO: " + tracksVO.toString());
                 mModel.setMusics(tracksVO.getMusics());
                 notifySucess();
             }

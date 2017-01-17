@@ -116,6 +116,7 @@ public class PlayListFragment extends BaseFragment {
             snackBarUtil.showError(new SnackBarUtil.OnClickListener() {
                 @Override
                 public void onClick() {
+                    swipeRefreshLayout.setRefreshing(true);
                     controller.getPlayLists();
                 }
             });

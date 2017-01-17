@@ -20,6 +20,7 @@ public class SnackBarUtil {
         mSnackbar.setAction("Tentar novamente", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listener.onClick();
                 mSnackbar.dismiss();
             }
         });

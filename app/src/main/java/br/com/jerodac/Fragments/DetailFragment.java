@@ -106,7 +106,7 @@ public class DetailFragment extends BaseFragment {
         ((ImageView) getActivity().findViewById(R.id.backdrop)).setImageResource(R.drawable.ic_music_parallax);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        ((TextView) getActivity().findViewById(R.id.describe_playlist)).setText(getArguments().getString(getResources().getString(R.string.app_name)));
+        ((TextView) getActivity().findViewById(R.id.describe_playlist)).setText(getArguments().getString(getResources().getString(R.string.describe_playlist)));
     }
 
     MusicListAdapter.OnItemClickListener onItemClickListener = new MusicListAdapter.OnItemClickListener() {

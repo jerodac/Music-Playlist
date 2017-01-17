@@ -1,7 +1,5 @@
 package br.com.jerodac.business;
 
-import android.util.Log;
-
 import br.com.jerodac.DTOs.RadiosResponseVO;
 import br.com.jerodac.DTOs.TracksVO;
 
@@ -15,7 +13,6 @@ public class RestClient {
     }
 
     public static TracksVO trackList(int id) {
-        Log.v("TAG", "id: " + id);
         return Configuration.getApi().tracks(id);
     }
 
