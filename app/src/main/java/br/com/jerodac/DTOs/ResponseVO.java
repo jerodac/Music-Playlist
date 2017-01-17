@@ -1,5 +1,7 @@
 package br.com.jerodac.DTOs;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -7,4 +9,11 @@ import java.io.Serializable;
  */
 public class ResponseVO implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @SerializedName("error")
+    private Error error;
+
+    public Error getError() {
+        return error;
+    }
 }

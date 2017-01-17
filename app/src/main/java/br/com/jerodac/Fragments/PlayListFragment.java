@@ -12,7 +12,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -128,7 +127,6 @@ public class PlayListFragment extends BaseFragment {
     PlayListAdapter.OnItemClickListener onItemClickListener = new PlayListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(int position, RadioDTO radioDTO, View v) {
-            Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
             DetailFragment detailFragment = new DetailFragment();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -139,6 +137,7 @@ public class PlayListFragment extends BaseFragment {
             }
 
             Bundle bundle = new Bundle();
+            bundle.putString("playlist", radioDTO.getTitle());
             bundle.putString("url_image", radioDTO.getPictureMedium());
             bundle.putInt("id", radioDTO.getId());
             detailFragment.setArguments(bundle);

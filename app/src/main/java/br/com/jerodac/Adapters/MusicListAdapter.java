@@ -79,8 +79,8 @@ public class MusicListAdapter extends RecyclerView
         holder.tvArtist.setText(mDataset.get(position).getArtist().getName());
         Picasso.with(mContext)
                 .load(mDataset.get(position).getArtist().getPicture())
-                .placeholder(R.drawable.ic_picasso_loading)
-                .error(R.drawable.ic_picasso_loading)
+                .placeholder(R.drawable.ic_picasso_artist)
+                .error(R.drawable.ic_picasso_artist)
                 .into(holder.imgArtist);
     }
 

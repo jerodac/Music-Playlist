@@ -68,10 +68,6 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-//    public FlowManager getFlowManager() {
-//        return ((MainActivity) getActivity()).getFlowManager();
-//    }
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
